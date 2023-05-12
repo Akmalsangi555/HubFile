@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key? key}) : super(key: key);
+  final String? userName;
+  ProfilePage({Key? key, this.userName}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -14,6 +15,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
   bool isDesktop(BuildContext context)=>MediaQuery.of(context).size.width >=630;
   bool isMobile(BuildContext context) => MediaQuery.of(context).size.width <630;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('userNam123 ${widget.userName}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(width: Get.width * 0.02),
                       CircleAvatar(
                         radius: 17.5,
-                        backgroundImage: AssetImage('assets/images/user.png'),
+                        backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
                       ),
                     ],
                   ),
@@ -162,7 +170,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         SizedBox(height: Get.height * 0.02),
                                         Stack(
                                           children: [
-                                            Image.asset('assets/images/user.png',
+                                            Image.asset('assets/welcome_images/business_woman.png',
                                               height: 80, width: 80, fit: BoxFit.fill),
                                             Positioned(
                                               top: 0,
@@ -216,7 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         SizedBox(height: Get.height * 0.02),
                                         Center(
-                                          child: Text('Emma Stone', maxLines: 5,
+                                          child: Text('${widget.userName}', maxLines: 5,
                                               style: TextStyle(fontSize: 20,
                                                   color: kBlueLight, fontWeight: FontWeight.w500)),
                                         ),
@@ -254,52 +262,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
                                         imagesList(),
 
-                                        // Container(
-                                        //   height: 150,
-                                        //   child: ListView.builder(
-                                        //     itemCount: 2,
-                                        //       itemBuilder: (context, index){
-                                        //     return Row(
-                                        //       children: [
-                                        //         Container(
-                                        //           color: colorGreen,
-                                        //         ),
-                                        //         Column(
-                                        //           children: [
-                                        //             Container(
-                                        //               color: colorGreen,
-                                        //             ),
-                                        //             Container(
-                                        //               color: colorGreen,
-                                        //             ),
-                                        //           ],
-                                        //         ),
-                                        //       ],
-                                        //     );
-                                        //   }),
-                                        //   // child: StaggeredGridView.countBuilder(
-                                        //   //   shrinkWrap: true,
-                                        //   //   physics: NeverScrollableScrollPhysics(),
-                                        //   //   crossAxisCount: 4,
-                                        //   //   itemCount: 8,
-                                        //   //   itemBuilder: (BuildContext context, int index) =>
-                                        //   //           Row(
-                                        //   //             children: [
-                                        //   //               Container(
-                                        //   //                   color: Colors.green,
-                                        //   //                   child: Center(
-                                        //   //                     child: CircleAvatar(
-                                        //   //                       backgroundColor: Colors.white,
-                                        //   //                       child: Text('$index'),
-                                        //   //                     ),
-                                        //   //                   )),
-                                        //   //             ],
-                                        //   //           ),
-                                        //   //   staggeredTileBuilder: (int index) => StaggeredTile.count(2, index.isEven ? 2 : 1),
-                                        //   //   mainAxisSpacing: 4.0,
-                                        //   //   crossAxisSpacing: 4.0,
-                                        //   // ),
-                                        // ),
                                         SizedBox(height: Get.height * 0.01),
                                       ],
                                     ),
@@ -349,7 +311,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                           children: [
                                                             CircleAvatar(
                                                               radius: 17.5,
-                                                              backgroundImage: AssetImage('assets/images/user.png'),
+                                                              backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
                                                             ),
                                                             SizedBox(width: Get.width*0.002,),
                                                             Padding(
@@ -411,22 +373,22 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             CircleAvatar(
                               radius: 17.5,
-                              backgroundImage: AssetImage('assets/images/user.png'),
+                              backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
                             ),
                             SizedBox(height: Get.height * 0.04),
                             CircleAvatar(
                               radius: 17.5,
-                              backgroundImage: AssetImage('assets/images/user.png'),
+                              backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
                             ),
                             SizedBox(height: Get.height * 0.04),
                             CircleAvatar(
                               radius: 17.5,
-                              backgroundImage: AssetImage('assets/images/user.png'),
+                              backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
                             ),
                             SizedBox(height: Get.height * 0.04),
                             CircleAvatar(
                               radius: 17.5,
-                              backgroundImage: AssetImage('assets/images/user.png'),
+                              backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
                             ),
                             SizedBox(height: Get.height * 0.04),
                           ],
@@ -518,7 +480,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Stack(
                         children: [
-                          Image.asset('assets/images/user.png',
+                          Image.asset('assets/welcome_images/business_woman.png',
                             height: 70, width: 70, fit: BoxFit.fill),
                           Positioned(
                             top: 0,
@@ -652,7 +614,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             children: [
                                               CircleAvatar(
                                                 radius: 17.5,
-                                                backgroundImage: AssetImage('assets/images/user.png'),
+                                                backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
                                               ),
                                               Positioned(
                                                 top: 0,

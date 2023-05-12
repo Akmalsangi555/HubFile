@@ -1,12 +1,12 @@
 import 'package:hub_file_flutter/Widgets/toast_message.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'ForgetPassword/forgot_password_page.dart';
 import 'signUp_page.dart';
 import 'package:get/get.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'ForgetPassword/forgot_password_page.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 import 'package:hub_file_flutter/utils/api_urls.dart';
 import 'package:hub_file_flutter/Widgets/round_button.dart';
@@ -105,16 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                           Container(
                             height: MediaQuery.of(context).size.height,
                             width: Get.width * 0.5,
-                            decoration: BoxDecoration(
-                              // gradient: LinearGradient(
-                              //   begin: Alignment.topRight,
-                              //   end: Alignment.bottomLeft,
-                              //   colors: [
-                              //     Colors.blue,
-                              //     Colors.red,
-                              //   ],
-                              // ),
-                            ),
+                            decoration: BoxDecoration(),
                           ),
 
                           Image.asset('assets/login_images/login_bg.png',
@@ -141,18 +132,13 @@ class _LoginPageState extends State<LoginPage> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'Login',
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            color: kBlue,
-                                            fontWeight: FontWeight.bold),
+                                      Text('Login', style: TextStyle(fontSize: 25,
+                                          color: kBlue, fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(height: Get.height * 0.04),
                                       Form(
                                         key: logInFormKey,
                                         child: WebAddressTextFormField().getCustomEditTextArea(
-                                          // hintValue: "Street address line 1",
                                           labelValue: 'Email/Username',
                                           controller: loginEmailController,
                                           validation: true,
@@ -214,37 +200,39 @@ class _LoginPageState extends State<LoginPage> {
                                           print('loginEmailController ${loginEmailController.text}');
                                           print('loginPasswordController ${loginPasswordController.text}');
 
-                                          // if(logInFormKey.currentState!.validate()){
-                                          //   if (loginEmailController.text.isEmpty) {
-                                          //     toastFailedMessage('email cannot be empty', Colors.red);
-                                          //   } else if (loginPasswordController.text.isEmpty) {
-                                          //     toastFailedMessage('password cannot be empty', Colors.red);
-                                          //   }
-                                          //   else{
-                                          //     await loginUserWidget();
-                                          //     if (userLoginModelObject.status == "success") {
-                                          //       print("LogIn Success");
-                                          //       SharedPreferences sharedPref = await SharedPreferences.getInstance();
-                                          //       await sharedPref.setString('user_id', "${userLoginModelObject.user?.id.toString()}");
-                                          //       print("userId in sharedPref: ${userLoginModelObject.user?.id.toString()}");
-                                          //
-                                          //       Future.delayed(Duration(seconds: 3), () {
-                                          //         toastSuccessMessage("${userLoginModelObject.status}", Colors.green);
-                                          //
-                                          //         Navigator.pushReplacement(context,
-                                          //             MaterialPageRoute(builder: (context) => ProfilePage()));
-                                          //       });
-                                          //     }
-                                          //     if (userLoginModelObject.status != "success") {
-                                          //
-                                          //       print("LoginErrorMessage: ${userLoginModelObject.status}");
-                                          //       print("LoginErrorMessage: ${userLoginModelObject.message}");
-                                          //       toastFailedMessage("${userLoginModelObject.status}", Colors.red);
-                                          //     }
-                                          //   }
-                                          // }
+                                          if(logInFormKey.currentState!.validate()){
+                                            if (loginEmailController.text.isEmpty) {
+                                              toastFailedMessage('email cannot be empty', Colors.red);
+                                            } else if (loginPasswordController.text.isEmpty) {
+                                              toastFailedMessage('password cannot be empty', Colors.red);
+                                            }
+                                            else{
+                                              await loginUserWidget();
+                                              if (userLoginModelObject.status == "success") {
+                                                print("LogIn Success");
+                                                SharedPreferences sharedPref = await SharedPreferences.getInstance();
+                                                await sharedPref.setString('user_id', "${userLoginModelObject.user?.id.toString()}");
+                                                print("userId in sharedPref: ${userLoginModelObject.user?.id.toString()}");
 
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                                                Future.delayed(Duration(seconds: 3), () {
+                                                  toastSuccessMessage("${userLoginModelObject.status}", Colors.green);
+
+                                                  Navigator.pushReplacement(context,
+                                                      MaterialPageRoute(builder: (context) => ProfilePage(
+                                                        userName: userLoginModelObject.user?.name,
+                                                      )));
+                                                });
+                                              }
+                                              if (userLoginModelObject.status != "success") {
+
+                                                print("LoginErrorMessage: ${userLoginModelObject.status}");
+                                                print("LoginErrorMessage: ${userLoginModelObject.message}");
+                                                toastFailedMessage("${userLoginModelObject.status}", Colors.red);
+                                              }
+                                            }
+                                          }
+
+                                          // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
 
                                         },
                                         buttonColor: kBlue,
@@ -386,37 +374,37 @@ class _LoginPageState extends State<LoginPage> {
                         print('loginEmailController ${loginEmailController.text}');
                         print('loginPasswordController ${loginPasswordController.text}');
 
-                        // if(logInFormKey.currentState!.validate()){
-                        //   if (loginEmailController.text.isEmpty) {
-                        //     toastFailedMessage('email cannot be empty', Colors.red);
-                        //   } else if (loginPasswordController.text.isEmpty) {
-                        //     toastFailedMessage('password cannot be empty', Colors.red);
-                        //   }
-                        //   else{
-                        //     await loginUserWidget();
-                        //     if (userLoginModelObject.status == "success") {
-                        //       print("LogIn Success");
-                        //       SharedPreferences sharedPref = await SharedPreferences.getInstance();
-                        //       await sharedPref.setString('user_id', "${userLoginModelObject.user?.id.toString()}");
-                        //       print("userId in sharedPref: ${userLoginModelObject.user?.id.toString()}");
-                        //
-                        //       Future.delayed(Duration(seconds: 3), () {
-                        //         toastSuccessMessage("${userLoginModelObject.status}", Colors.green);
-                        //
-                        //         Navigator.pushReplacement(context,
-                        //             MaterialPageRoute(builder: (context) => ProfilePage()));
-                        //       });
-                        //     }
-                        //     if (userLoginModelObject.status != "success") {
-                        //
-                        //       print("LoginErrorMessage: ${userLoginModelObject.status}");
-                        //       print("LoginErrorMessage: ${userLoginModelObject.message}");
-                        //       toastFailedMessage("${userLoginModelObject.status}", Colors.red);
-                        //     }
-                        //   }
-                        // }
+                        if(logInFormKey.currentState!.validate()){
+                          if (loginEmailController.text.isEmpty) {
+                            toastFailedMessage('email cannot be empty', Colors.red);
+                          } else if (loginPasswordController.text.isEmpty) {
+                            toastFailedMessage('password cannot be empty', Colors.red);
+                          }
+                          else{
+                            await loginUserWidget();
+                            if (userLoginModelObject.status == "success") {
+                              print("LogIn Success");
+                              SharedPreferences sharedPref = await SharedPreferences.getInstance();
+                              await sharedPref.setString('user_id', "${userLoginModelObject.user?.id.toString()}");
+                              print("userId in sharedPref: ${userLoginModelObject.user?.id.toString()}");
 
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                              Future.delayed(Duration(seconds: 3), () {
+                                toastSuccessMessage("${userLoginModelObject.status}", Colors.green);
+
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) => ProfilePage()));
+                              });
+                            }
+                            if (userLoginModelObject.status != "success") {
+
+                              print("LoginErrorMessage: ${userLoginModelObject.status}");
+                              print("LoginErrorMessage: ${userLoginModelObject.message}");
+                              toastFailedMessage("${userLoginModelObject.status}", Colors.red);
+                            }
+                          }
+                        }
+
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
                       },
                       buttonColor: kBlue,
 

@@ -1,16 +1,15 @@
 
-import 'package:flutter/gestures.dart';
-import 'package:get/get.dart';
-import 'package:flutter/material.dart';
-import 'package:hub_file_flutter/Models/user_register_model.dart';
-import 'package:hub_file_flutter/Widgets/toast_message.dart';
-import 'package:hub_file_flutter/utils/api_urls.dart';
-import 'package:hub_file_flutter/utils/colors.dart';
-import 'package:hub_file_flutter/Widgets/round_button.dart';
-import 'package:hub_file_flutter/Widgets/address_text_form_field.dart';
-
-import 'package:http/http.dart' as http;
 import 'login_page.dart';
+import 'package:get/get.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:hub_file_flutter/utils/colors.dart';
+import 'package:hub_file_flutter/utils/api_urls.dart';
+import 'package:hub_file_flutter/Widgets/round_button.dart';
+import 'package:hub_file_flutter/Widgets/toast_message.dart';
+import 'package:hub_file_flutter/Models/user_register_model.dart';
+import 'package:hub_file_flutter/Widgets/address_text_form_field.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key? key}) : super(key: key);
