@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:hub_file_flutter/Screens/Profile/profile_page.dart';
+import 'package:hub_file_flutter/Screens/HomePage/home_page.dart';
 import 'package:hub_file_flutter/Screens/Authentication/login_page.dart';
 
 SharedPreferences? prefs;
-String? userId;
+String? userId, userToken;
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key? key}) : super(key: key);
 
@@ -17,16 +17,18 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   bool loading = true;
-  String? userFirstName, userLastName, userImage;
+
   sharedPrefs() async {
     loading = true;
     setState(() {});
     print('in LoginPage shared prefs');
     prefs = await SharedPreferences.getInstance();
-    userId = (prefs!.getString('userid'));
-    print("userId in LoginPrefs is = $userId");
+    userId = (prefs!.getString('user_id'));
+    userToken = (prefs!.getString('user_token'));
+    print("userId in LoginPrefs $userId");
+    print("userToken in LoginPrefs $userToken");
     if (userId != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
     }
     else{
       loading = false;
@@ -55,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Text('hub', style: TextStyle(fontSize: 25, color: kWhite, fontWeight: FontWeight.bold)),
               Padding(
                 padding: EdgeInsets.only(top: 04),
-                child: Text('file', style: TextStyle(fontSize: 18, color: kWhite),),
+                child: Text('file', style: TextStyle(fontSize: 18, color: kWhite)),
               ),
             ],
           ),
@@ -66,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   splashNavigator() {
     Timer(Duration(seconds: 3), () {
-      // sharedPrefs();
+      sharedPrefs();
       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
     });
   }

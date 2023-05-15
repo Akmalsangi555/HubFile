@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 Color kBlue = Color(0xff4C48E3);
 Color kBlueLight = Color(0xff566BFC);
 Color kWhite = Color(0xFFFFFFFF);
+Color kAmberLight = Color(0xffFFDF00);
 Color kBlack = Color(0xFF000000);
 Color kRed = Color(0xFFFF2D2D);
 Color kBrown300 = Color(0xFF8D6E63);

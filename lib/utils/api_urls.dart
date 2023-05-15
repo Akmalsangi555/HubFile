@@ -6,3 +6,4 @@ String baseUrl = 'http://filehub-api.teslasolution.com/api/';
 /// Authentication Page API Urls
 String signUpApiUrl = '${baseUrl}auth/register';
 String signInApiUrl = '${baseUrl}auth/login';
+String signOutApiUrl = '${baseUrl}auth/logout';

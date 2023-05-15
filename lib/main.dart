@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'Screens/Splash/splash_screen.dart';
 
 void main() {
@@ -10,8 +12,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hub File',
+    return GetMaterialApp(
+      /// for Horizontal listview scrolling on web
+      scrollBehavior: MyCustomScrollBehavior(),
+      title: 'HubFile',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -19,4 +23,14 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
     );
   }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+
+    // etc.
+  };
 }

@@ -1,0 +1,9 @@
+<svg id="Group_205" data-name="Group 205" xmlns="http://www.w3.org/2000/svg" width="126" height="51" viewBox="0 0 126 51">
+  <rect id="Rectangle_103" data-name="Rectangle 103" width="126" height="51" rx="10" fill="#566bfc"/>
+  <g id="Group_204" data-name="Group 204" transform="translate(14.665 13)">
+    <path id="video-camera" d="M25.106,29.9a2.211,2.211,0,0,0-2.293.2L20.8,31.564a5.454,5.454,0,0,0-5.454-4.847h-.093l-4.519-4.438a3.292,3.292,0,0,0-2.325-.947H1.1a1.077,1.077,0,1,0,0,2.154H8.411a1.113,1.113,0,0,1,.775.316l2.968,2.915H5.482A5.441,5.441,0,0,0,0,32.1v8.616A5.441,5.441,0,0,0,5.482,46.1h9.867A5.454,5.454,0,0,0,20.8,41.258l2.006,1.469a2.219,2.219,0,0,0,3.07-.431A2.129,2.129,0,0,0,26.317,41V31.826A2.137,2.137,0,0,0,25.106,29.9ZM18.637,40.719a3.26,3.26,0,0,1-3.289,3.231H5.482a3.26,3.26,0,0,1-3.289-3.231V32.1a3.26,3.26,0,0,1,3.289-3.231h9.867A3.26,3.26,0,0,1,18.637,32.1ZM24.119,41,20.83,38.588V34.234l3.289-2.408Z" transform="translate(0 -21.333)" fill="#d1dffa"/>
+    <g id="Group_203" data-name="Group 203" transform="translate(34.335 3)">
+      <text id="Video" fill="#d1dffa" font-size="19" font-family="SegoeUI, Segoe UI" letter-spacing="0.027em"><tspan x="0" y="21">Video</tspan></text>
+    </g>
+  </g>
+</svg>

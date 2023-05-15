@@ -1,0 +1,10 @@
+<svg id="Group_206" data-name="Group 206" xmlns="http://www.w3.org/2000/svg" width="134" height="51" viewBox="0 0 134 51">
+  <rect id="Rectangle_102" data-name="Rectangle 102" width="134" height="51" rx="10" fill="#566bfc"/>
+  <g id="Group_202" data-name="Group 202" transform="translate(15.998 13.114)">
+    <g id="picture">
+      <path id="Path_21" data-name="Path 21" d="M19.778,0H5.2A5.166,5.166,0,0,0,0,5.113V19.43a5.166,5.166,0,0,0,5.2,5.113H19.778a5.166,5.166,0,0,0,5.2-5.113V5.113A5.166,5.166,0,0,0,19.778,0ZM5.2,2.045H19.778A3.1,3.1,0,0,1,22.9,5.113V19.43a2.974,2.974,0,0,1-.312,1.314l-9.538-9.37a5.271,5.271,0,0,0-7.362,0L2.082,14.916v-9.8A3.1,3.1,0,0,1,5.2,2.045ZM5.2,22.5A3.1,3.1,0,0,1,2.082,19.43V17.808L7.16,12.82a3.163,3.163,0,0,1,4.418,0l9.538,9.371a3.117,3.117,0,0,1-1.338.307Z" fill="#d1dffa"/>
+      <path id="Path_22" data-name="Path 22" d="M16.143,10.658A3.58,3.58,0,1,0,12.5,7.079,3.612,3.612,0,0,0,16.143,10.658Zm0-5.113a1.534,1.534,0,1,1-1.561,1.534A1.548,1.548,0,0,1,16.143,5.545Z" transform="translate(0.512 0.079)" fill="#d1dffa"/>
+    </g>
+    <text id="Image" transform="translate(36.004 1.772)" fill="#d1dffa" font-size="19" font-family="SegoeUI, Segoe UI" letter-spacing="0.027em"><tspan x="0" y="21">Image</tspan></text>
+  </g>
+</svg>
