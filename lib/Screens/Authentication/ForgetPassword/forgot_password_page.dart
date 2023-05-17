@@ -48,7 +48,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 5),
-                          child: Image.asset('assets/profile_page/back_button.png'),
+                          child: Image.asset('assets/profile_images/back_button.png'),
                         ),
                       ),
                       Padding(
@@ -122,7 +122,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           },
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 5),
-                            child: Image.asset('assets/profile_page/back_button.png'),
+                            child: Image.asset('assets/profile_images/back_button.png'),
                           ),
                         ),
                         Padding(

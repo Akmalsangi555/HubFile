@@ -44,7 +44,7 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 5),
-                        child: Image.asset('assets/profile_page/back_button.png'),
+                        child: Image.asset('assets/profile_images/back_button.png'),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 05),
@@ -121,7 +121,7 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                                   margin: EdgeInsets.only(left: 10.0, right: 10.0),
                                 ),
                                 SizedBox(width: Get.width * 0.05),
-                                myWidget('100', 'Collabs'),
+                                myWidget('100', 'CollabsPage'),
                               ],
                             ),
                           ],
@@ -199,7 +199,7 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                           },
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 5),
-                            child: Image.asset('assets/profile_page/back_button.png'),
+                            child: Image.asset('assets/profile_images/back_button.png'),
                           ),
                         ),
                         Padding(
@@ -277,7 +277,7 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                                     margin: EdgeInsets.only(left: 10.0, right: 10.0),
                                   ),
                                   SizedBox(width: Get.width * 0.05),
-                                  myWidget('100', 'Collabs'),
+                                  myWidget('100', 'CollabsPage'),
                                 ],
                               ),
                             ],

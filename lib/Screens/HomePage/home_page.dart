@@ -3,6 +3,9 @@ import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:hub_file_flutter/Screens/CollabsPage/collabs_page.dart';
+import 'package:hub_file_flutter/Screens/SearchPage/search_page.dart';
+import 'package:hub_file_flutter/Widgets/home_page_widgets.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 import 'package:hub_file_flutter/utils/api_urls.dart';
 import 'package:hub_file_flutter/Models/user_logout_model.dart';
@@ -219,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 SizedBox(width: Get.width * 0.02),
-                                notificationIconWidget('assets/profile_page/notification_Component.png',),
+                                notificationIconWidget('assets/profile_images/notification_Component.png',),
                                 SizedBox(width: Get.width * 0.02),
                                 GestureDetector(
                                     onTapDown: (TapDownDetails details) {
@@ -248,13 +251,13 @@ class _HomePageState extends State<HomePage> {
                             padding: EdgeInsets.only(top: Get.height * 0.04),
                             child: Column(
                               children: [
-                                drawerIconWidget('assets/profile_page/home_Component.png'),
+                                drawerIconWidget('assets/profile_images/home_Component.png'),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_page/u_Component.png'),
+                                drawerIconWidget('assets/profile_images/u_Component.png'),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_page/save_Component.png'),
+                                drawerIconWidget('assets/profile_images/save_Component.png'),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_page/share_Component.png'),
+                                drawerIconWidget('assets/profile_images/share_Component.png'),
                                 SizedBox(height: Get.height * 0.04),
                               ],
                             ),
@@ -342,7 +345,7 @@ class _HomePageState extends State<HomePage> {
                                                             visible: isVisible,
                                                             child: Row(
                                                               children: [
-                                                                Image.asset('assets/home_page/file_icon.jpeg', height: 25, width: 50, fit: BoxFit.fill),
+                                                                Image.asset('assets/home_images/file_icon.jpeg', height: 25, width: 50, fit: BoxFit.fill),
                                                               ],
                                                             ),
                                                           ),
@@ -350,13 +353,13 @@ class _HomePageState extends State<HomePage> {
                                                             onPressed: toggleVisibility,
                                                             child: Row(
                                                               children: [
-                                                                SvgPicture.asset('assets/home_page/Group 206.svg', height: 25, width: 50, fit: BoxFit.fill, ),
+                                                                SvgPicture.asset('assets/home_images/Group 206.svg', height: 25, width: 50, fit: BoxFit.fill, ),
                                                                 SizedBox(width: 10),
-                                                                SvgPicture.asset('assets/home_page/Group 205.svg', height: 25, width: 50, fit: BoxFit.fill, ),
+                                                                SvgPicture.asset('assets/home_images/Group 205.svg', height: 25, width: 50, fit: BoxFit.fill, ),
                                                                 SizedBox(width: 10),
-                                                                Image.asset('assets/home_page/location_icon.png', height: 25, width: 50, fit: BoxFit.fill),
+                                                                Image.asset('assets/home_images/location_icon.png', height: 25, width: 50, fit: BoxFit.fill),
                                                                 SizedBox(width: 10),
-                                                                Image.asset(isVisible ? 'assets/home_page/close_icon.jpeg' : 'assets/home_page/add_icon.png'  , height: 25, width: 50, fit: BoxFit.fill,),
+                                                                Image.asset(isVisible ? 'assets/home_images/close_icon.jpeg' : 'assets/home_images/add_icon.png'  , height: 25, width: 50, fit: BoxFit.fill,),
                                                               ],
                                                             ),
 
@@ -391,7 +394,7 @@ class _HomePageState extends State<HomePage> {
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    Text('People Activities',
+                                                    Text('CollabsPeople Activities',
                                                       style: TextStyle(
                                                           fontSize: 16,
                                                           color: kBlue,
@@ -496,11 +499,11 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                                 SizedBox(height: Get.height * 0.02),
 
-                                                activityRequestWidget('assets/profile_page/behrouz_sasani.png', 'Request to add you in brainstrom'),
+                                                activityRequestWidget('assets/profile_images/behrouz_sasani.png', 'Request to add you in brainstrom'),
                                                 SizedBox(height: Get.height * 0.015),
-                                                activityRequestWidget('assets/profile_page/behrouz_sasani.png', 'Request to add you in project'),
+                                                activityRequestWidget('assets/profile_images/behrouz_sasani.png', 'Request to add you in project'),
                                                 SizedBox(height: Get.height * 0.015),
-                                                activityRequestWidget('assets/profile_page/behrouz_sasani.png', 'Request to add you in project'),
+                                                activityRequestWidget('assets/profile_images/behrouz_sasani.png', 'Request to add you in project'),
 
                                                 SizedBox(height: Get.height * 0.05),
                                               ],
@@ -530,7 +533,7 @@ class _HomePageState extends State<HomePage> {
                                                       left: 0,
                                                       right: 0,
                                                       top: 0,
-                                                      child: Image.asset('assets/home_page/houses_icon.png')
+                                                      child: Image.asset('assets/home_images/houses_icon.png')
                                                   ),
                                                   Positioned(
                                                     top: 110,
@@ -539,11 +542,11 @@ class _HomePageState extends State<HomePage> {
                                                       children: [
                                                         CircleAvatar(
                                                           radius: 20,
-                                                          backgroundImage: AssetImage('assets/profile_page/behrouz_sasani.png'),
+                                                          backgroundImage: AssetImage('assets/profile_images/behrouz_sasani.png'),
                                                         ),
                                                         Positioned(
                                                             top: 00, left: 02,
-                                                            child: Image.asset('assets/home_page/ellipse_icon.png', height: 10, width: 10,)),
+                                                            child: Image.asset('assets/home_images/ellipse_icon.png', height: 10, width: 10,)),
                                                       ],
                                                     ),
                                                   ),
@@ -556,7 +559,7 @@ class _HomePageState extends State<HomePage> {
                                                   children: [
                                                     Row(
                                                       children: [
-                                                        Image.asset('assets/home_page/marker_icon.png', height: 10, width: 10,),
+                                                        Image.asset('assets/home_images/marker_icon.png', height: 10, width: 10,),
                                                         SizedBox(width: Get.width * 0.01),
                                                         Text('123 Street, ABC, New York',
                                                             style: TextStyle(fontSize: 12, color: Colors.grey.shade500)
@@ -587,10 +590,10 @@ class _HomePageState extends State<HomePage> {
                             padding: EdgeInsets.only(top: Get.height * 0.06),
                             child: Column(
                               children: [
-                                onLineImageWidget('assets/profile_page/behrouz_sasani.png', 'assets/profile_page/ellipse.png'),
-                                onLineImageWidget('assets/profile_page/ian_dooley.png', 'assets/profile_page/ellipse.png'),
-                                onLineImageWidget('assets/profile_page/aiony_haust.png', 'assets/profile_page/ellipse.png'),
-                                onLineImageWidget('assets/profile_page/wasim_chouak.png', 'assets/profile_page/ellipse.png'),
+                                onLineImageWidget('assets/profile_images/behrouz_sasani.png', 'assets/profile_images/ellipse.png'),
+                                onLineImageWidget('assets/profile_images/ian_dooley.png', 'assets/profile_images/ellipse.png'),
+                                onLineImageWidget('assets/profile_images/aiony_haust.png', 'assets/profile_images/ellipse.png'),
+                                onLineImageWidget('assets/profile_images/wasim_chouak.png', 'assets/profile_images/ellipse.png'),
                               ],
                             ),
                           ),
@@ -619,19 +622,32 @@ class _HomePageState extends State<HomePage> {
           items: [
             BottomNavigationBarItem(
               backgroundColor: Colors.transparent,
-              icon: Image.asset('assets/profile_page/home_Component.png'),
+              icon: Image.asset('assets/profile_images/home_Component.png'),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_page/u_Component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CollabsPage()));
+                  },
+                  child: Image.asset('assets/profile_images/u_Component.png')),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_page/search_component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+                  },
+
+                  child: Image.asset('assets/profile_images/search_component.png')),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_page/profile_component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                  },
+                  child: Image.asset('assets/profile_images/profile_component.png')),
               label: '',
             )],
             type: BottomNavigationBarType.fixed
@@ -659,7 +675,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         children: [
 
-                          notificationIconWidget('assets/profile_page/notification_Component.png',),
+                          notificationIconWidget('assets/profile_images/notification_Component.png',),
                         ],
                       ),
                     ],
@@ -722,13 +738,13 @@ class _HomePageState extends State<HomePage> {
 
                                 Row(
                                   children: [
-                                    Image.asset('assets/home_page/picture_home.png', ),
+                                    Image.asset('assets/home_images/picture_home.png', ),
                                     SizedBox(width: Get.width* 0.05),
-                                    Image.asset('assets/home_page/video_camera_home.png'),
+                                    Image.asset('assets/home_images/video_camera_home.png'),
                                     SizedBox(width: Get.width* 0.05),
-                                    Image.asset('assets/home_page/marker_home.png', ),
+                                    Image.asset('assets/home_images/marker_home.png', ),
                                     SizedBox(width: Get.width* 0.05),
-                                    Image.asset('assets/home_page/add_home.png'),
+                                    Image.asset('assets/home_images/add_home.png'),
                                    
                                   ],
                                 ),
@@ -745,7 +761,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('People Activities', style: TextStyle(fontSize: 12,
+                          Text('CollabsPeople Activities', style: TextStyle(fontSize: 12,
                               color: kBlue, fontWeight: FontWeight.bold)),
                           Row(
                             children: [
@@ -1074,10 +1090,9 @@ class _HomePageState extends State<HomePage> {
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Text(peopleActivitiesList[index].userName, style: TextStyle(
-                                                  color: Colors.white, fontSize: 12)),
-                                              Text(peopleActivitiesList[index].userAddress, style: TextStyle(
-                                                  color: Colors.white, fontSize: 6)),
+                                              Text(peopleActivitiesList[index].userName,
+                                                  style: TextStyle(color: Colors.white, fontSize: 12)),
+
                                             ],
                                           ),
                                         ),
@@ -1124,157 +1139,7 @@ class _HomePageState extends State<HomePage> {
       ));
     }
   }
-
-  myWidget(text1, text2) {
-    return Column(
-      children: [
-        Text(text1, style: TextStyle(fontSize: 12,
-            color: kBlack, fontWeight: FontWeight.bold)),
-        SizedBox(height: Get.height * 0.01),
-        Text(text2, style: TextStyle(fontSize: 08,
-            color: kGrey, fontWeight: FontWeight.normal)),
-      ],
-    );
-  }
-
-  myContainer(text1, IconData iconData, myColor) {
-    return Container(
-      width: Get.width *0.105,
-      height: 30,
-      decoration: BoxDecoration(
-          color: myColor, borderRadius: BorderRadius.circular(05)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(iconData, size: 10),
-          SizedBox(width: Get.width * 0.01),
-          Text(text1, style: TextStyle(fontSize: 08,
-              color: kBlack, fontWeight: FontWeight.normal)),
-        ],
-      ),
-    );
-  }
-  myContainer2(text1, IconData iconData, myColor) {
-    return Container(
-      width: 100,
-      height: 30,
-      decoration: BoxDecoration(
-          color: myColor, borderRadius: BorderRadius.circular(05)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(iconData, size: 10),
-          SizedBox(width: Get.width * 0.01),
-          Text(text1, style: TextStyle(fontSize: 08,
-              color: kBlack, fontWeight: FontWeight.normal)),
-        ],
-      ),
-    );
-  }
-
-  imageWidget(IconData iconData) {
-    return Padding(
-      padding: EdgeInsets.all(4.0),
-      child: Icon(iconData, color: kGrey),
-    );
-  }
-
-  drawerIconWidget(image){
-    return Container(
-      height: 30, width: 30,
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.02),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Image.asset(image, height: 30, width: 30, fit: BoxFit.fill),
-      ),
-    );
-  }
-
-  notificationIconWidget(image){
-    return Container(
-      height: 30, width: 30,
-      decoration: BoxDecoration(
-        color: Colors.grey.shade50,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Image.asset(image, height: 25, width: 25),
-      ),
-    );
-  }
-
-  onLineImageWidget(image, image2){
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: Get.height * 0.015),
-      child: Stack(
-        children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundImage: AssetImage(image),
-          ),
-          Positioned(
-              bottom: 0, right: 02,
-              child: Image.asset(image2, height: 10, width: 10,)),
-        ],
-      ),
-    );
-  }
-
-  activityRequestWidget(image1, requestText){
-    return Row(
-      children: [
-        Stack(
-          children: [
-            CircleAvatar(
-              radius: 20,
-              backgroundImage: AssetImage(image1),
-            ),
-            Positioned(
-                top: 0, left: 02,
-                child: Image.asset('assets/home_page/ellipse_icon.png', height: 10, width: 10,)),
-          ],
-        ),
-        SizedBox(width: 10),
-        Container(
-            color: Colors.transparent,
-            width: Get.width * 0.115,
-            child: Text(requestText, maxLines: 2,
-              style: TextStyle(color: Colors.grey.shade400, fontSize: 12),
-            )
-        ),
-        SizedBox(width: 05),
-        Container(
-          height: Get.height* 0.03,
-          decoration: BoxDecoration(
-              color: kBlueLight,
-              borderRadius: BorderRadius.circular(05)
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Center(child: Text('Accept', style: TextStyle(color: kWhite, fontSize: 09))),
-          ),
-        ),
-        SizedBox(width: 05),
-        Container(
-          height: Get.height* 0.03,
-          decoration: BoxDecoration(
-              color: Colors.red.shade500,
-              borderRadius: BorderRadius.circular(05)
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Center(child: Text('Remove', style: TextStyle(color: kWhite, fontSize: 09))),
-          ),
-        ),
-      ],
-    );
-  }
 }
-
 
 List peopleActivitiesList = [
   PeopleActivityClass('assets/images/concert_image.jpg', 'assets/welcome_images/business_woman.png', 'Julie', '123 Street ABC, New York'),
@@ -1294,10 +1159,10 @@ class PeopleActivityClass {
 
 List hipHopUsersList = [
 
-  HipHopClass('assets/profile_page/behrouz_sasani.png', 'Emma', '#Hiphoplover'),
-  HipHopClass('assets/profile_page/ian_dooley.png', 'Davis John', '#Hiphoplover'),
-  HipHopClass('assets/profile_page/aiony_haust.png', 'Julie', '#Hiphoplover'),
-  HipHopClass('assets/profile_page/wasim_chouak.png', 'Micheal', '#Hiphoplover'),
+  HipHopClass('assets/profile_images/behrouz_sasani.png', 'Emma', '#Hiphoplover'),
+  HipHopClass('assets/profile_images/ian_dooley.png', 'Davis John', '#Hiphoplover'),
+  HipHopClass('assets/profile_images/aiony_haust.png', 'Julie', '#Hiphoplover'),
+  HipHopClass('assets/profile_images/wasim_chouak.png', 'Micheal', '#Hiphoplover'),
 
 ];
 

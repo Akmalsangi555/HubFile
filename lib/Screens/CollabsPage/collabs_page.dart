@@ -1,35 +1,37 @@
 
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hub_file_flutter/Screens/HomePage/home_page.dart';
+import 'package:hub_file_flutter/Screens/Profile/profile_page.dart';
+import 'package:hub_file_flutter/Screens/SearchPage/search_page.dart';
 import 'package:hub_file_flutter/Widgets/home_page_widgets.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 import 'package:hub_file_flutter/Widgets/custom_radio_widget.dart';
 import 'package:hub_file_flutter/Screens/Drawer/collapsable_drawer.dart';
 
-class ProfilePage extends StatefulWidget {
+import 'CollabsPeople/collabs_people.dart';
+import 'CollabsProjects/collabs_projects.dart';
+
+
+class CollabsPage extends StatefulWidget {
   final String? userName;
-  ProfilePage({Key? key, this.userName}) : super(key: key);
+  CollabsPage({Key? key, this.userName}) : super(key: key);
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<CollabsPage> createState() => _CollabsPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _CollabsPageState extends State<CollabsPage> with TickerProviderStateMixin {
 
   bool isDesktop(BuildContext context)=>MediaQuery.of(context).size.width >=630;
   bool isMobile(BuildContext context) => MediaQuery.of(context).size.width <630;
   List<RadioModel> sampleData = <RadioModel>[];
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('userNam123 ${widget.userName}');
-
-    sampleData.add(RadioModel(false, 'Edit Profile', 'assets/profile_images/edit_icon.png'));
-    sampleData.add(RadioModel(true, 'Insights', 'assets/profile_images/chart_component.png'));
-    sampleData.add(RadioModel(false, 'Share', 'assets/profile_images/share_icon.png'));
-
   }
 
   int _currentIndex = 0;
@@ -130,6 +132,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    TabController _tabController = TabController(length: 2, vsync: this);
     if (isDesktop(context)) {
       return SafeArea(
         child: Scaffold(
@@ -502,6 +506,7 @@ class _ProfilePageState extends State<ProfilePage> {
     else {
       return SafeArea(
           child: Scaffold(
+            backgroundColor: kWhite,
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           // mouseCursor: MouseCursor.uncontrolled,
@@ -524,11 +529,19 @@ class _ProfilePageState extends State<ProfilePage> {
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_images/search_component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+                  },
+                  child: Image.asset('assets/profile_images/search_component.png')),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_images/profile_component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                  },
+                  child: Image.asset('assets/profile_images/profile_component.png')),
               label: '',
             )],
             type: BottomNavigationBarType.fixed
@@ -545,217 +558,95 @@ class _ProfilePageState extends State<ProfilePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Profile', style: TextStyle(color: kBlue,
+                      Text('Collabs', style: TextStyle(color: kBlue,
                           fontWeight: FontWeight.bold, fontSize: 18)),
-                      Row(
-                        children: [
-                          Image.asset('assets/profile_images/u_layer.png'),
-                          SizedBox(width: Get.width * 0.01),
-                          Text('100', style: TextStyle(fontSize: 14,
-                              color: kAmberLight, fontWeight: FontWeight.bold)),
-                          SizedBox(width: Get.width * 0.01),
-                          notificationIconWidget('assets/profile_images/notification_Component.png',),
-                        ],
-                      ),
+                      notificationIconWidget('assets/profile_images/notification_Component.png',),
                     ],
                   ),
                   SizedBox(height: Get.height * 0.02),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Stack(
-                        children: [
-                          Image.asset('assets/welcome_images/business_woman.png',
-                            height: 90, width: 90, fit: BoxFit.fill),
-                          Positioned(
-                            top: 0,
-                            left: 03,
-                            child: Container(
-                              height: 20,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  color: kBlue,
-                                  borderRadius: BorderRadius.circular(50)),
-                              child: Padding(
-                                padding: EdgeInsets.all(0.0),
-                                child: Center(
-                                    child: Text('1', style: TextStyle(
-                                      fontWeight: FontWeight.bold, color: kWhite)),
+                      Expanded(
+                        child: Container(
+                          height: 35,
+                          // width: Get.width * 0.45,
+                          decoration: BoxDecoration(
+                            color: Color(0xffF7F7F7),
+                            border: Border.all(
+                              color: Color(0xffF7F7F7),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom: Get.height * 0.02,
+                                left: Get.width * 0.02),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Search',
+                                hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 09, wordSpacing: 1.5),
+                                suffixIconColor: kBlueLight,
+                                suffixIcon: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: Get.height * 0.01,
+                                      right: Get.width * 0.02),
+                                  child: Icon(Icons.search, color: kBlueLight, size: 20),
                                 ),
+                                border: InputBorder.none,
                               ),
                             ),
                           ),
-                          Positioned(
-                            bottom: 0,
-                            right: 03,
-                            child: Container(
-                              height: 20,
-                              width: 20,
-                              decoration: BoxDecoration(
-                                  color: kAmberLight,
-                                  borderRadius: BorderRadius.circular(50)),
-                              child: Padding(
-                                padding: EdgeInsets.all(0.0),
-                                child: Center(
-                                    child: Text('B',
-                                  style: TextStyle(fontWeight: FontWeight.bold)),
-                                ),
-                              ),
-                            ),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Container(
+                          height: 35, width: 35,
+                          decoration: BoxDecoration(
+                            color: Color(0xffF7F7F7),
+                            borderRadius: BorderRadius.circular(5),
                           ),
-                        ],
+                          child: Icon(Icons.filter_alt_outlined, color: kBlueLight, size: 17)),
+                    ],
+                  ),
+                  SizedBox(height: Get.height * 0.03),
+                  TabBar(
+                    controller: _tabController,
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    indicatorColor: kBlue,
+                    unselectedLabelColor: Colors.green,
+                    isScrollable: false,
+                    labelColor: Colors.black,
+                    automaticIndicatorColorAdjustment: false,
+                    tabs: [
+                      Tab(
+                        child: Text('People', style: TextStyle(fontSize: 15,
+                            color: _tabController.index == 0 ? Colors.black : Colors.grey)),
+                      ),
+                      Tab(
+                        child: Text('Projects', style: TextStyle(fontSize: 15,
+                              color: _tabController.index == 1 ? Colors.black : Colors.grey)),
                       ),
                     ],
                   ),
-                  SizedBox(height: Get.height * 0.02),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(width: 70),
-                      Center(
-                        child: Text('Julie Clary',
-                            maxLines: 2, style: TextStyle(
-                                fontSize: 18, color: kBlue,
-                                fontWeight: FontWeight.w700)),
-                      ),
-                      Row(
-                        children: [
-                          Image.asset('assets/profile_images/gift_icon.png',
-                              height: 20, width: 20, fit: BoxFit.fill),
-                          SizedBox(width: Get.width * 0.02),
-                          Image.asset('assets/profile_images/heart_icon.png',
-                              height: 20, width: 20, fit: BoxFit.fill),
 
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: Get.height * 0.01),
-                  Center(
-                    child: Text('#Musiclover #traveller #businessman',
-                        maxLines: 5, style: TextStyle(
-                            fontSize: 08, color: kGrey,
-                            fontWeight: FontWeight.normal)),
-                  ),
-                  SizedBox(height: Get.height * 0.01),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Get.width * 0.17),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        myWidget('10', 'Posts'),
-                        VerticalDivider(color: kGrey),
-                        myWidget('231', 'Followers'),
-                        VerticalDivider(color: kGrey),
-                        myWidget('100', 'CollabsPage'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Get.height * 0.02),
-                  radioButtonWidget2(),
-                  SizedBox(height: Get.height * 0.01),
-                  imagesList(),
-                  SizedBox(height: Get.height * 0.02),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Container(
+                    height: Get.height*0.65,
+                    width: Get.width,
+                    child: TabBarView(
+                        controller: _tabController,
                         children: [
-                          Text('Activity', style: TextStyle(fontSize: 16,
-                              color: kBlue, fontWeight: FontWeight.bold)),
-                          Row(
-                            children: [
-                              Icon(Icons.filter_alt_outlined, color: Colors.grey.shade500, size: 15),
-                              Text('Filters', style: TextStyle(
-                                      fontSize: 10, color: Colors.grey.shade500)),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: Get.height * 0.01),
-                      ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) =>
-                              Column(
-                                children: [
-                                  Container(
-                                    height: 200,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage('assets/images/concert_image.jpg'),
-                                            fit: BoxFit.cover)),
-                                    child: Padding(
-                                      padding: EdgeInsets.only(top: 10, left: Get.width*0.01, right: Get.width*0.01,),
-                                      child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Stack(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 17.5,
-                                                backgroundImage: AssetImage('assets/welcome_images/business_woman.png'),
-                                              ),
-                                              Positioned(
-                                                top: 0,
-                                                left: 01,
-                                                child: Container(
-                                                  height: 15,
-                                                  width: 15,
-                                                  padding: EdgeInsets.all(02),
-                                                  decoration: BoxDecoration(
-                                                      color: kBlue,
-                                                      borderRadius: BorderRadius.circular(50)),
-                                                  child: Text('1', style: TextStyle(color: kWhite, fontSize: 10), textAlign: TextAlign.center),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(width: Get.width*0.002),
-                                          Padding(
-                                            padding:  EdgeInsets.only(top: 5),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Julie', style: TextStyle(
-                                                    color: Colors.white, fontSize: 12)),
-                                                Text('123 Street ABC, New York', style: TextStyle(
-                                                    color: Colors.white, fontSize: 6)),
-                                              ],
-                                            ),
-                                          ),
-                                          Spacer(),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 5),
-                                            child: Icon(Icons.more_vert,color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 7),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        bottom: 10),
-                                    child: Row(
-                                      children: [
-                                        Icon(Icons.favorite_border, color: Colors.grey.shade300, size: 25),
-                                        SizedBox(width: Get.width * 0.02),
-                                        Icon(Icons.messenger_outline, color: Colors.grey.shade300, size: 25),
-                                        SizedBox(width: Get.width * 0.02),
-                                        Icon(Icons.add, color: Colors.grey.shade300, size: 25),
-                                        SizedBox(width: Get.width * 0.02),
-                                        Spacer(),
-                                        Text('#hiphop #music #lifestyle', maxLines: 5, style: TextStyle(
-                                            fontSize: 08, color: Colors.black38)),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                          itemCount: 4),
-                    ],
+                          /// Apna idher 2 diff widget call kr lena ak login or ak register
+                          // Container(
+                          //   color: Colors.red,
+                          // ),
+                          // Container(
+                          //   color: Colors.blueAccent,
+                          // ),
+                          CollabsPeople(),
+                          CollabsProjects(),
+
+                        ]),
                   ),
                 ],
               ),
@@ -765,6 +656,18 @@ class _ProfilePageState extends State<ProfilePage> {
       ));
     }
   }
+  searchHistoryWidget(searchText, searchTime){
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: Get.height* 0.012),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(searchText, style: TextStyle(fontSize: 10, color: Colors.black54)),
+          Text(searchTime, style: TextStyle(fontSize: 10, color: Colors.black38)),
+        ],
+      ),
+    );
+}
 
   myWidget(text1, text2) {
     return Column(

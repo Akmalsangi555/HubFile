@@ -1,0 +1,110 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hub_file_flutter/utils/colors.dart';
+
+class CollabsProjects extends StatefulWidget {
+  const CollabsProjects({Key? key}) : super(key: key);
+
+  @override
+  State<CollabsProjects> createState() => _CollabsProjectsState();
+}
+
+class _CollabsProjectsState extends State<CollabsProjects> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: kWhite,
+      body: Column(
+        children: [
+          SizedBox(height: Get.height * 0.025),
+          Container(
+            height: Get.height* 0.6,
+            child: ListView.builder(
+                itemCount: collabsPeopleList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 05),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xffF7F7F7),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 07),
+                        child: ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Container(
+                            width: 85,
+                            color: Colors.transparent,
+                            child: Stack(
+                              //alignment:new Alignment(x, y)
+                              children: <Widget>[
+                                Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      border: Border.all(color: kWhite, width: 4),
+                                    ),
+                                    child: Image.asset(collabsPeopleList[index].userImage1, height: 40, width: 40)),
+                                Positioned(
+                                  left: 20.0,
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        border: Border.all(color: kWhite, width: 4),
+                                      ),
+                                      child: Image.asset(collabsPeopleList[index].userImage2, height: 40, width: 40)),
+                                ),
+                                Positioned(
+                                  left:40.0,
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        border: Border.all(color: kWhite, width: 4),
+                                      ),
+                                      child: Image.asset(collabsPeopleList[index].userImage3, height: 40, width: 40)),
+                                )
+
+                              ],
+                            ),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(collabsPeopleList[index].userName,
+                                  textAlign: TextAlign.left, style: TextStyle(fontSize: 14, color: kBlue, fontWeight: FontWeight.bold)),
+                              Text(collabsPeopleList[index].userStatus, textAlign: TextAlign.left,
+                                  style: TextStyle(color: Colors.black38, fontSize: 08)),
+                            ],
+                          ),
+                          subtitle: Padding(
+                            padding: EdgeInsets.only(top: 05),
+                            child: Text(collabsPeopleList[index].userDescription,
+                                textAlign: TextAlign.left,
+                                maxLines: 2, overflow: TextOverflow.ellipsis,
+                                style: TextStyle(color: Color(0xffD3D3D3), fontSize: 09)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+List collabsPeopleList = [
+  CollabsPeopleClass('assets/welcome_images/business_woman.png', 'assets/profile_images/behrouz_sasani.png', 'assets/profile_images/ian_dooley.png', 'Jazz Festival Event', 'Lorem ipsum is simply dummy text of the printing and typesetting industry.', 'Seen by all'),
+  CollabsPeopleClass('assets/profile_images/behrouz_sasani.png', 'assets/profile_images/ian_dooley.png', 'assets/profile_images/wasim_chouak.png', 'Web Design Project', 'Lorem ipsum is simply dummy text of the printing and typesetting industry.', ''),
+  CollabsPeopleClass('assets/profile_images/ian_dooley.png', 'assets/profile_images/aiony_haust.png', 'assets/welcome_images/business_woman.png', 'Event Management', 'Lorem ipsum is simply dummy text of the printing and typesetting industry.' , ''),
+];
+
+class CollabsPeopleClass {
+  final String userImage1, userImage2, userImage3;
+  final String userName;
+  final String userDescription;
+  final String userStatus;
+  CollabsPeopleClass(this.userImage1, this.userImage2, this.userImage3, this.userName, this.userDescription, this.userStatus);
+}

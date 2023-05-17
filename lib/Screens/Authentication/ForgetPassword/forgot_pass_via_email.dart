@@ -43,7 +43,7 @@ class _ForgotPassViaEmailState extends State<ForgotPassViaEmail> {
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 5),
-                        child: Image.asset('assets/profile_page/back_button.png'),
+                        child: Image.asset('assets/profile_images/back_button.png'),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 05),
@@ -120,7 +120,7 @@ class _ForgotPassViaEmailState extends State<ForgotPassViaEmail> {
                                   margin: EdgeInsets.only(left: 10.0, right: 10.0),
                                 ),
                                 SizedBox(width: Get.width * 0.05),
-                                myWidget('100', 'Collabs'),
+                                myWidget('100', 'CollabsPage'),
                               ],
                             ),
                           ],
@@ -197,7 +197,7 @@ class _ForgotPassViaEmailState extends State<ForgotPassViaEmail> {
                           },
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 5),
-                            child: Image.asset('assets/profile_page/back_button.png'),
+                            child: Image.asset('assets/profile_images/back_button.png'),
                           ),
                         ),
                         Padding(
@@ -275,7 +275,7 @@ class _ForgotPassViaEmailState extends State<ForgotPassViaEmail> {
                                     margin: EdgeInsets.only(left: 10.0, right: 10.0),
                                   ),
                                   SizedBox(width: Get.width * 0.05),
-                                  myWidget('100', 'Collabs'),
+                                  myWidget('100', 'CollabsPage'),
                                 ],
                               ),
                             ],
