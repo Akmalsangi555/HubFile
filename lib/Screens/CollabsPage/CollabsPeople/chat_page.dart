@@ -114,7 +114,11 @@ class ChatPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Image.asset('assets/profile_images/back_button.png'),
+                          GestureDetector(
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                              child: Image.asset('assets/profile_images/back_button.png')),
                           SizedBox(width: 05),
                           Text('Davis John', style: TextStyle(color: kBlue,
                               fontWeight: FontWeight.bold, fontSize: 18)),

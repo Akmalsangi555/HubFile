@@ -1,7 +1,10 @@
 
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:hub_file_flutter/Screens/CollabsPage/collabs_page.dart';
 import 'package:hub_file_flutter/Screens/HomePage/home_page.dart';
+import 'package:hub_file_flutter/Screens/SearchPage/search_page.dart';
 import 'package:hub_file_flutter/Widgets/home_page_widgets.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 import 'package:hub_file_flutter/Widgets/custom_radio_widget.dart';
@@ -178,7 +181,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                 ),
                                 SizedBox(width: Get.width * 0.02),
-                                notificationIconWidget('assets/profile_images/notification_Component.png',),
+                                notificationIconWidget('assets/profile_images/notification_icon.svg', context),
                                 SizedBox(width: Get.width * 0.02),
                                 GestureDetector(
                                     onTapDown: (TapDownDetails details) {
@@ -516,21 +519,37 @@ class _ProfilePageState extends State<ProfilePage> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                   },
-                  child: Image.asset('assets/profile_images/home_Component.png')),
+                  child: SvgPicture.asset('assets/profile_images/home.svg')),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_images/u_Component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CollabsPage()));
+                  },
+                  child: SvgPicture.asset('assets/profile_images/you.svg')
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_images/search_component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+                  },
+                  child: SvgPicture.asset('assets/profile_images/search.svg')
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_images/profile_component.png'),
+              icon: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                },
+                child: SvgPicture.asset('assets/profile_images/profile.svg',),
+              ),
               label: '',
-            )],
+            )
+          ],
             type: BottomNavigationBarType.fixed
         ),
         body: Padding(
@@ -554,7 +573,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           Text('100', style: TextStyle(fontSize: 14,
                               color: kAmberLight, fontWeight: FontWeight.bold)),
                           SizedBox(width: Get.width * 0.01),
-                          notificationIconWidget('assets/profile_images/notification_Component.png',),
+                          notificationIconWidget('assets/profile_images/notification_icon.svg', context),
                         ],
                       ),
                     ],

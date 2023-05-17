@@ -182,7 +182,7 @@ class _CollabsPageState extends State<CollabsPage> with TickerProviderStateMixin
                                   ),
                                 ),
                                 SizedBox(width: Get.width * 0.02),
-                                notificationIconWidget('assets/profile_images/notification_Component.png',),
+                                notificationIconWidget('assets/profile_images/notification_icon.svg', context),
                                 SizedBox(width: Get.width * 0.02),
                                 GestureDetector(
                                     onTapDown: (TapDownDetails details) {
@@ -521,11 +521,16 @@ class _CollabsPageState extends State<CollabsPage> with TickerProviderStateMixin
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                   },
-                  child: Image.asset('assets/profile_images/home_Component.png')),
+                  child: SvgPicture.asset('assets/profile_images/home.svg')),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_images/u_Component.png'),
+              icon: GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CollabsPage()));
+                  },
+                  child: SvgPicture.asset('assets/profile_images/you.svg')
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
@@ -533,17 +538,20 @@ class _CollabsPageState extends State<CollabsPage> with TickerProviderStateMixin
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
                   },
-                  child: Image.asset('assets/profile_images/search_component.png')),
+                  child: SvgPicture.asset('assets/profile_images/search.svg')
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
-                  },
-                  child: Image.asset('assets/profile_images/profile_component.png')),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                },
+                child: SvgPicture.asset('assets/profile_images/profile.svg',),
+              ),
               label: '',
-            )],
+            )
+          ],
             type: BottomNavigationBarType.fixed
         ),
         body: Padding(
@@ -560,7 +568,7 @@ class _CollabsPageState extends State<CollabsPage> with TickerProviderStateMixin
                     children: [
                       Text('Collabs', style: TextStyle(color: kBlue,
                           fontWeight: FontWeight.bold, fontSize: 18)),
-                      notificationIconWidget('assets/profile_images/notification_Component.png',),
+                      notificationIconWidget('assets/profile_images/notification_icon.svg', context),
                     ],
                   ),
                   SizedBox(height: Get.height * 0.02),
@@ -698,6 +706,7 @@ class _CollabsPageState extends State<CollabsPage> with TickerProviderStateMixin
       ),
     );
   }
+
   myContainer2(text1, IconData iconData, myColor) {
     return Container(
       width: 100,

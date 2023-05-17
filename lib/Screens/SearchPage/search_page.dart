@@ -39,6 +39,14 @@ class _SearchPageState extends State<SearchPage> {
     });
   }
 
+  bool isVisible = false;
+
+  void toggleVisibility() {
+    setState(() {
+      isVisible = !isVisible;
+    });
+  }
+
   radioButtonWidget(){
     return Container(
       height: 50,
@@ -176,7 +184,7 @@ class _SearchPageState extends State<SearchPage> {
                                   ),
                                 ),
                                 SizedBox(width: Get.width * 0.02),
-                                notificationIconWidget('assets/profile_images/notification_Component.png',),
+                                notificationIconWidget('assets/profile_images/notification_icon.svg', context),
                                 SizedBox(width: Get.width * 0.02),
                                 GestureDetector(
                                     onTapDown: (TapDownDetails details) {
@@ -515,7 +523,7 @@ class _SearchPageState extends State<SearchPage> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                   },
-                  child: Image.asset('assets/profile_images/home_Component.png')),
+                  child: SvgPicture.asset('assets/profile_images/home.svg')),
               label: '',
             ),
             BottomNavigationBarItem(
@@ -523,21 +531,29 @@ class _SearchPageState extends State<SearchPage> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => CollabsPage()));
                   },
-                  child: Image.asset('assets/profile_images/u_Component.png')),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset('assets/profile_images/search_component.png'),
+                  child: SvgPicture.asset('assets/profile_images/you.svg')
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: GestureDetector(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
                   },
-                  child: Image.asset('assets/profile_images/profile_component.png')),
+                  child: SvgPicture.asset('assets/profile_images/search.svg')
+              ),
               label: '',
-            )],
+            ),
+            BottomNavigationBarItem(
+              icon: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                },
+                child: SvgPicture.asset('assets/profile_images/profile.svg',),
+              ),
+              label: '',
+            )
+          ],
             type: BottomNavigationBarType.fixed
         ),
         body: Padding(
@@ -558,55 +574,196 @@ class _SearchPageState extends State<SearchPage> {
                         children: [
                           SvgPicture.asset('assets/search_images/Union.svg', height: 25, width: 50, fit: BoxFit.fill, ),
                           SizedBox(width: Get.width * 0.01),
-                          notificationIconWidget('assets/profile_images/notification_Component.png',),
+                          notificationIconWidget('assets/profile_images/notification_icon.svg', context),
                         ],
                       ),
                     ],
                   ),
+
                   SizedBox(height: Get.height * 0.02),
-                  Row(
+                  Column(
                     children: [
-                      Expanded(
-                        child: Container(
-                          height: 35,
-                          // width: Get.width * 0.45,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade50,
-                            border: Border.all(
-                              color: Colors.grey.shade50,
-                              width: 1.0,
+                      isVisible?
+                      Visibility(
+                          visible: isVisible,
+                          child: Container(
+                        height: 325, width: Get.width,
+                        decoration: BoxDecoration(color: kBlue,
+                            borderRadius: BorderRadius.circular(05)
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            height: 35,
+                                            // width: Get.width * 0.45,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xff7471F3),
+                                              border: Border.all(
+                                                color: Color(0xff7471F3),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius: BorderRadius.circular(5),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  bottom: Get.height * 0.02,
+                                                  left: Get.width * 0.02),
+                                              child: TextField(
+                                                decoration: InputDecoration(
+                                                  hintText: 'Search',
+                                                  hintStyle: TextStyle(color: Color(0xffF3F3FE), fontSize: 09, wordSpacing: 1.5),
+                                                  suffixIconColor: kBlueLight,
+                                                  suffixIcon: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        top: Get.height * 0.01,
+                                                        right: Get.width * 0.02),
+                                                    child: Icon(Icons.search, color: Color(0xffF3F3FE), size: 20),
+                                                  ),
+                                                  border: InputBorder.none,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 10),
+
+                                        TextButton(
+                                          onPressed: toggleVisibility,
+                                          child: Container(
+                                              height: 35, width: 35,
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                                borderRadius: BorderRadius.circular(5),
+                                              ),
+                                              child: Icon(isVisible? Icons.close : Icons.filter_alt_outlined, color: kWhite, size: 17)),
+                                        ),
+                                      ],
+                                    ),
+                                  SizedBox(height: Get.height* 0.03),
+                                  Text('Level 1', style: TextStyle(color: Color(0xffF3F3FE), fontSize: 10, fontWeight: FontWeight.bold)),
+                                  SizedBox(height: Get.height* 0.02),
+
+                                  Row(
+                                    children: [
+                                      levelOneTextWidget('#Residential'),
+                                      SizedBox(width: Get.width * 0.015),
+                                      levelOneTextWidget('#Texas'),
+                                      SizedBox(width: Get.width * 0.015),
+                                      levelOneTextWidget('#Electrician'),
+                                    ],
+                                  ),
+                                  SizedBox(height: Get.height* 0.01),
+                                  Row(
+                                    children: [
+                                      levelOneTextWidget('#insured'),
+                                      SizedBox(width: Get.width * 0.015),
+                                      levelOneTextWidget('#Licensed'),
+                                      SizedBox(width: Get.width * 0.015),
+                                      levelOneTextWidget('#Single'),
+                                    ],
+                                  ),
+                                  SizedBox(height: Get.height* 0.03),
+                                  Text('Level 2', style: TextStyle(color: Color(0xffF3F3FE), fontSize: 10, fontWeight: FontWeight.bold)),
+                                  SizedBox(height: Get.height* 0.008),
+                                ],
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                bottom: Get.height * 0.02,
-                                left: Get.width * 0.02),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Search',
-                                hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 09, wordSpacing: 1.5),
-                                suffixIconColor: kBlueLight,
-                                suffixIcon: Padding(
-                                  padding: EdgeInsets.only(
-                                      top: Get.height * 0.01,
-                                      right: Get.width * 0.02),
-                                  child: Icon(Icons.search, color: kBlueLight, size: 20),
+                            Container(
+                              height: 110, width: Get.width,
+                              decoration: BoxDecoration(
+                                color: Color(0xff7471F3),
+                                border: Border.all(
+                                  color: Color(0xff7471F3),
+                                  width: 1.0,
                                 ),
-                                border: InputBorder.none,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(05),
+                                    bottomRight: Radius.circular(05)
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.lock_outline_rounded, size: 40, color: Color(0xffF3F3FE)),
+                                  SizedBox(height: Get.height* 0.015),
+                                    RichText(
+                                      text: TextSpan(
+                                        text: 'Unlock ',
+                                        style: TextStyle(
+                                            fontSize: 14, color: Color(0xffF3F3FE), fontWeight: FontWeight.bold),
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: 'to access all features',
+                                            style: TextStyle(
+                                                fontSize: 10, color: Color(0xffF3F3FE)),
+                                            // recognizer: TapGestureRecognizer()..onTap = () => Navigator.push(
+                                            //     context, MaterialPageRoute(builder: (context) => LoginPage())),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ): TextButton(
+                    onPressed: toggleVisibility,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 35,
+                            // width: Get.width * 0.45,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade50,
+                              border: Border.all(
+                                color: Colors.grey.shade50,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  bottom: Get.height * 0.02,
+                                  left: Get.width * 0.02),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: 'Search',
+                                  hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 09, wordSpacing: 1.5),
+                                  suffixIconColor: kBlueLight,
+                                  suffixIcon: Padding(
+                                    padding: EdgeInsets.only(
+                                        top: Get.height * 0.01,
+                                        right: Get.width * 0.02),
+                                    child: Icon(Icons.search, color: kBlueLight, size: 20),
+                                  ),
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: 10),
-                      Container(
-                          height: 35, width: 35,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade50,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Icon(Icons.filter_alt_outlined, color: kBlueLight, size: 17)),
+                        SizedBox(width: 10),
+                        Container(
+                            height: 35, width: 35,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade50,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Icon(isVisible? Icons.close : Icons.filter_alt_outlined, color: kBlueLight, size: 17)),
+                      ],
+                    ),
+                  ),
                     ],
                   ),
                   SizedBox(height: Get.height * 0.03),
@@ -620,7 +777,7 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 30),
-                            child: Text("Today", style: TextStyle(color: Colors.grey.shade300, fontSize: 10),),
+                            child: Text("Today", style: TextStyle(color: Colors.grey.shade300, fontSize: 10)),
                           ),
                           Expanded(
                               child: Divider()
@@ -629,10 +786,11 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                   ),
                   SizedBox(height: Get.height * 0.01),
+                  
+                  // searchHistoryWidget('#work', 'Recent'),
+                  // searchHistoryWidget('#Location', 'Recent'),
 
-                  searchHistoryWidget('#work', 'Recent'),
-                  searchHistoryWidget('#Location', 'Recent'),
-
+                  searchResultWidget(),
 
                 ],
               ),
@@ -642,6 +800,23 @@ class _SearchPageState extends State<SearchPage> {
       ));
     }
   }
+
+
+  levelOneTextWidget(text){
+    return Container(
+        height: 30, width: 100,
+        decoration: BoxDecoration(
+          color: Color(0xff7471F3),
+          border: Border.all(
+            color: Color(0xff7471F3),
+            width: 1.0,
+          ),
+          borderRadius: BorderRadius.circular(03),
+        ),
+        child: Center(
+            child: Text(text, style: TextStyle(color: Color(0xffF3F3FE), fontSize: 13, fontWeight: FontWeight.w500))));
+  }
+
   searchHistoryWidget(searchText, searchTime){
     return Padding(
       padding: EdgeInsets.symmetric(vertical: Get.height* 0.012),
@@ -664,48 +839,6 @@ class _SearchPageState extends State<SearchPage> {
         Text(text2, style: TextStyle(fontSize: 08,
             color: kGrey, fontWeight: FontWeight.normal)),
       ],
-    );
-  }
-
-  myContainer(text1, IconData iconData, myColor) {
-    return Container(
-      width: Get.width *0.105,
-      height: 30,
-      decoration: BoxDecoration(
-          color: myColor, borderRadius: BorderRadius.circular(05)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(iconData, size: 10),
-          SizedBox(width: Get.width * 0.01),
-          Text(text1, style: TextStyle(fontSize: 08,
-              color: kBlack, fontWeight: FontWeight.normal)),
-        ],
-      ),
-    );
-  }
-  myContainer2(text1, IconData iconData, myColor) {
-    return Container(
-      width: 100,
-      height: 30,
-      decoration: BoxDecoration(
-          color: myColor, borderRadius: BorderRadius.circular(05)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(iconData, size: 10),
-          SizedBox(width: Get.width * 0.01),
-          Text(text1, style: TextStyle(fontSize: 08,
-              color: kBlack, fontWeight: FontWeight.normal)),
-        ],
-      ),
-    );
-  }
-
-  imageWidget(IconData iconData) {
-    return Padding(
-      padding: EdgeInsets.all(4.0),
-      child: Icon(iconData, color: kGrey),
     );
   }
 
@@ -746,6 +879,91 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
+  searchResultWidget(){
+    return Container(
+      height: Get.height* 0.6,
+      child: ListView.builder(
+          itemCount: searchResultList.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 05),
+              child: GestureDetector(
+                onTap: (){
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) => ChatPage()));
+                },
+
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xffF7F7F7),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Stack(
+                              children: [
+                                Image.asset(searchResultList[index].userImage, height: 60, width: 60),
+                                Positioned(
+                                  top: 0,
+                                  left: 01,
+                                  child: Container(
+                                    height: 15,
+                                    width: 15,
+                                    padding: EdgeInsets.all(02),
+                                    decoration: BoxDecoration(
+                                        color: kBlue,
+                                        borderRadius: BorderRadius.circular(50)),
+                                    child: Text(searchResultList[index].userNumber,
+                                        style: TextStyle(color: kWhite, fontSize: 10), textAlign: TextAlign.center),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(searchResultList[index].userName,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(fontSize: 14, color: kBlue, fontWeight: FontWeight.bold)),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Text(searchResultList[index].userDescription,
+                                      textAlign: TextAlign.left,
+                                      maxLines: 2, overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(color: Colors.black38, fontSize: 08)),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            children: [
+                              Icon(Icons.favorite_outline, color: Color(0xff4C48E3), size: 30),
+                              SizedBox(width: 10),
+                              Icon(Icons.person_add_alt_outlined, color: Color(0xff4C48E3), size: 30),
+                              SizedBox(width: 10),
+                              Icon(Icons.share_outlined, color: Color(0xff4C48E3), size: 30),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }),
+    );
+  }
+
 }
 
 List cardList = [
@@ -759,4 +977,22 @@ class _FitnessCategory {
   final String image2;
   final String image3;
   _FitnessCategory(this.image1, this.image2, this.image3);
+}
+
+List searchResultList = [
+  SearchResultClass('assets/welcome_images/business_woman.png', '1', 'David John', '#Musiclover #traveller #businessman'),
+  SearchResultClass('assets/profile_images/behrouz_sasani.png', '2', 'David John', '#Musiclover #traveller #businessman'),
+  SearchResultClass('assets/profile_images/ian_dooley.png', '3', 'David John', '#Musiclover #traveller #businessman'),
+  SearchResultClass('assets/profile_images/aiony_haust.png', '1', 'David John', '#Musiclover #traveller #businessman'),
+  SearchResultClass('assets/profile_images/wasim_chouak.png', '2', 'David John', '#Musiclover #traveller #businessman'),
+
+];
+
+class SearchResultClass {
+  final String userImage;
+  final String userNumber;
+  final String userName;
+  final String userDescription;
+
+  SearchResultClass(this.userImage, this.userNumber, this.userName, this.userDescription);
 }

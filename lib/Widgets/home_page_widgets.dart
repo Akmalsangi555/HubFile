@@ -1,7 +1,9 @@
 
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
+import 'package:hub_file_flutter/Screens/Notifications/notifications_screen.dart';
 
 drawerIconWidget(image){
   return Container(
@@ -17,16 +19,22 @@ drawerIconWidget(image){
   );
 }
 
-notificationIconWidget(image){
-  return Container(
-    height: 30, width: 30,
-    decoration: BoxDecoration(
-      color: Colors.grey.shade50,
-      borderRadius: BorderRadius.circular(5),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Image.asset(image, height: 25, width: 25),
+notificationIconWidget(image, BuildContext context){
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => NotificationsScreen()));
+    },
+    child: Container(
+      height: 30, width: 30,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: SvgPicture.asset(image, height: 25, width: 25),
+      ),
     ),
   );
 }

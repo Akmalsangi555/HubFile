@@ -20,7 +20,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Container(
             child: Column(
               children: [
-                const SizedBox(height: 10,),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -46,7 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

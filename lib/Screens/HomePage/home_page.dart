@@ -222,7 +222,8 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 SizedBox(width: Get.width * 0.02),
-                                notificationIconWidget('assets/profile_images/notification_Component.png',),
+                                notificationIconWidget('assets/profile_images/notification_icon.svg', context),
+
                                 SizedBox(width: Get.width * 0.02),
                                 GestureDetector(
                                     onTapDown: (TapDownDetails details) {
@@ -353,7 +354,7 @@ class _HomePageState extends State<HomePage> {
                                                             onPressed: toggleVisibility,
                                                             child: Row(
                                                               children: [
-                                                                SvgPicture.asset('assets/home_images/Group 206.svg', height: 25, width: 50, fit: BoxFit.fill, ),
+                                                                SvgPicture.asset('assets/home_images/Group 206.svg', height: 25, width: 50, fit: BoxFit.fill),
                                                                 SizedBox(width: 10),
                                                                 SvgPicture.asset('assets/home_images/Group 205.svg', height: 25, width: 50, fit: BoxFit.fill, ),
                                                                 SizedBox(width: 10),
@@ -622,7 +623,7 @@ class _HomePageState extends State<HomePage> {
           items: [
             BottomNavigationBarItem(
               backgroundColor: Colors.transparent,
-              icon: Image.asset('assets/profile_images/home_Component.png'),
+              icon: SvgPicture.asset('assets/profile_images/home.svg'),
               label: '',
             ),
             BottomNavigationBarItem(
@@ -630,7 +631,8 @@ class _HomePageState extends State<HomePage> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => CollabsPage()));
                   },
-                  child: Image.asset('assets/profile_images/u_Component.png')),
+                  child: SvgPicture.asset('assets/profile_images/you.svg')
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
@@ -638,8 +640,8 @@ class _HomePageState extends State<HomePage> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
                   },
-
-                  child: Image.asset('assets/profile_images/search_component.png')),
+                  child: SvgPicture.asset('assets/profile_images/search.svg')
+              ),
               label: '',
             ),
             BottomNavigationBarItem(
@@ -647,9 +649,11 @@ class _HomePageState extends State<HomePage> {
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
                   },
-                  child: Image.asset('assets/profile_images/profile_component.png')),
+                  child: SvgPicture.asset('assets/profile_images/profile.svg',),
+              ),
               label: '',
-            )],
+            )
+          ],
             type: BottomNavigationBarType.fixed
         ),
         body: Padding(
@@ -675,7 +679,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         children: [
 
-                          notificationIconWidget('assets/profile_images/notification_Component.png',),
+                          notificationIconWidget('assets/profile_images/notification_icon.svg', context),
                         ],
                       ),
                     ],
