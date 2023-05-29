@@ -1,65 +1,6 @@
-// import 'package:flutter/material.dart';
-//
-// enum MessageType {
-//   text,
-//   image,
-// }
-//
-// class Message {
-//   final String content;
-//   final MessageType type;
-//
-//   Message({required this.content, required this.type});
-// }
-//
-// class ChatPage extends StatelessWidget {
-//   final List<Message> messages = [
-//     Message(content: "Hello", type: MessageType.text),
-//     Message(content: "assets/images/concert_image.jpg", type: MessageType.image),
-//     Message(content: "How are you?", type: MessageType.text),
-//     // Add more messages here
-//   ];
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Chat Page'),
-//       ),
-//       body: ListView.builder(
-//         itemCount: messages.length,
-//         itemBuilder: (BuildContext context, int index) {
-//           final message = messages[index];
-//           return _buildMessageWidget(message);
-//         },
-//       ),
-//     );
-//   }
-//
-//   Widget _buildMessageWidget(Message message) {
-//     if (message.type == MessageType.text) {
-//       return ListTile(
-//         title: Container(
-//             decoration: BoxDecoration(
-//               color: Color(0xffF7F7F7),
-//               borderRadius: BorderRadius.circular(5),
-//             ),
-//             child: Text(message.content,  style: TextStyle(color: Colors.black38, fontSize: 10)),
-//         ),
-//       );
-//     } else if (message.type == MessageType.image) {
-//       return ListTile(
-//         title: Image.asset(message.content, height: 200, width: 200,),
-//       );
-//     } else {
-//       return Container(); // Handle other message types as needed
-//     }
-//   }
-// }
 
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 
 enum MessageType {

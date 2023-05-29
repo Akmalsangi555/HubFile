@@ -252,13 +252,16 @@ class _HomePageState extends State<HomePage> {
                             padding: EdgeInsets.only(top: Get.height * 0.04),
                             child: Column(
                               children: [
-                                drawerIconWidget('assets/profile_images/home_Component.png'),
+                                drawerIconWidget('assets/profile_images/home_Component.png', () {}),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_images/u_Component.png'),
+                                drawerIconWidget('assets/profile_images/u_Component.png', () {
+                                  print('CollabsPageClicked');
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CollabsPage()));
+                                }),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_images/save_Component.png'),
+                                drawerIconWidget('assets/profile_images/save_Component.png', () {}),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_images/share_Component.png'),
+                                drawerIconWidget('assets/profile_images/share_Component.png', () {}),
                                 SizedBox(height: Get.height * 0.04),
                               ],
                             ),
@@ -395,7 +398,7 @@ class _HomePageState extends State<HomePage> {
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    Text('CollabsPeople Activities',
+                                                    Text('People Activities',
                                                       style: TextStyle(
                                                           fontSize: 16,
                                                           color: kBlue,

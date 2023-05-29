@@ -1,20 +1,23 @@
 
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:hub_file_flutter/utils/colors.dart';
 import 'package:hub_file_flutter/Screens/Notifications/notifications_screen.dart';
 
-drawerIconWidget(image){
-  return Container(
-    height: 30, width: 30,
-    decoration: BoxDecoration(
-      color: Colors.grey.withOpacity(0.02),
-      borderRadius: BorderRadius.circular(5),
-    ),
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Image.asset(image, height: 30, width: 30, fit: BoxFit.fill),
+drawerIconWidget(image, VoidCallback onPressed){
+  return GestureDetector(
+    onTap: onPressed,
+    child: Container(
+      height: 30, width: 30,
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.02),
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset(image, height: 30, width: 30, fit: BoxFit.fill),
+      ),
     ),
   );
 }

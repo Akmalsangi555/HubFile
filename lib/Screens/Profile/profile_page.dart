@@ -210,13 +210,13 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: EdgeInsets.only(top: Get.height * 0.04),
                             child: Column(
                               children: [
-                                drawerIconWidget('assets/profile_images/home_Component.png'),
+                                drawerIconWidget('assets/profile_images/home_Component.png', () {}),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_images/u_Component.png'),
+                                drawerIconWidget('assets/profile_images/u_Component.png', () {}),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_images/save_Component.png'),
+                                drawerIconWidget('assets/profile_images/save_Component.png', () {}),
                                 SizedBox(height: Get.height * 0.04),
-                                drawerIconWidget('assets/profile_images/share_Component.png'),
+                                drawerIconWidget('assets/profile_images/share_Component.png', () {}),
                                 SizedBox(height: Get.height * 0.04),
                               ],
                             ),
